@@ -50,8 +50,8 @@ import { ElNotification } from "element-plus";
 //引入获取当前时间的函数
 // import { getTime } from "@/utils/time";
 //引入用户相关的小仓库
-// import useUserStore from "@/store/modules/user";
-// let useStore = useUserStore();
+import useUserStore from "@/store/modules/user";
+let useStore = useUserStore();
 //获取el-form组件
 let loginForms = ref();
 //获取路由器
@@ -61,7 +61,7 @@ let $route = useRoute();
 //定义变量控制按钮加载效果
 let loading = ref(false);
 //收集账号与密码的数据
-let loginForm = reactive({ username: "admin", password: "atguigu123" });
+let loginForm = reactive({ username: "admin", password: "111111" });
 //登录按钮回调
 const login = async () => {
   //保证全部表单相校验通过再发请求
@@ -80,11 +80,11 @@ const login = async () => {
     let redirect: any = $route.query.redirect;
     $router.push({ path: redirect || "/" });
     //登录成功提示信息
-    // ElNotification({
-    //   type: "success",
-    //   message: "欢迎回来",
-    //   title: `HI,${getTime()}好`,
-    // });
+    ElNotification({
+      type: "success",
+      message: "欢迎回来",
+      // title: `HI,${getTime()}好`,
+    });
     //登录成功加载效果也消失
     loading.value = false;
   } catch (error) {

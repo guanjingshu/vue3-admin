@@ -10,6 +10,7 @@ import "@/styles/index.scss";
 import gloalComponent from "@/components";
 // 引入路由
 import router from "@/router";
+import pinia from "@/store";
 //svg插件需要配置代码
 const app = createApp(App);
 
@@ -19,6 +20,7 @@ app.use(ElementPlus, {
 
 app.use(gloalComponent);
 app.use(router);
+app.use(pinia);
 app.mount("#app");
 
 // console.log(import.meta.env);

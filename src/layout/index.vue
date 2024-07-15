@@ -2,6 +2,17 @@
   <div class="layout_container">
     <div class="layout_slider">
       <Logo></Logo>
+      <el-scrollbar class="scrollbar">
+        <el-menu background-color="#001529" text-color="white">
+          <el-menu-item index="1">首页</el-menu-item>
+          <el-menu-item index="2">数据大屏</el-menu-item>
+          <el-sub-menu index="3">
+            <template #title>数据看板</template>
+            <el-menu-item index="3-1">数据看板1</el-menu-item>
+            <el-menu-item index="3-2">数据看板2</el-menu-item>
+          </el-sub-menu>
+        </el-menu>
+      </el-scrollbar>
     </div>
     <div class="layout_tabbar">456</div>
     <div class="layout_main">789</div>

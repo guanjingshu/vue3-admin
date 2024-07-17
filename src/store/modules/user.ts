@@ -2,10 +2,12 @@ import { defineStore } from "pinia";
 import { reqLogin } from "@/api/user";
 import type { UserState } from "./types/type";
 import { SET_TOKEN, GET_TOKEN } from "@/utils/token";
+import { constantRoutes } from "@/router/routes";
 let useUserStore = defineStore("user", {
   state: () => {
     return {
       token: GET_TOKEN("TOKEN") || "",
+      menuRoutes: constantRoutes, //仓库存储生成菜单需要数组(路由)
     };
   },
   actions: {

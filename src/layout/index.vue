@@ -3,7 +3,25 @@
     <div class="layout_slider">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
-        <el-menu background-color="#001529" text-color="white">
+        <!--根据路由动态生成菜单-->
+        <!-- {{ userStore.menuRoutes  :collapse="LayOutSettingStore.fold?true:false"}} -->
+        <el-menu
+          :default-active="$route.path"
+          background-color="#001529"
+          text-color="white"
+          active-text-color="yellowgreen"
+        >
+          <Menu :menuList="userStore.menuRoutes"></Menu>
+        </el-menu>
+      </el-scrollbar>
+    </div>
+    <div class="layout_tabbar">456</div>
+    <div class="layout_main">
+      <Main></Main>
+    </div>
+  </div>
+
+  <!-- <el-menu background-color="#001529" text-color="white">
           <el-menu-item index="1">首页</el-menu-item>
           <el-menu-item index="2">数据大屏</el-menu-item>
           <el-sub-menu index="3">
@@ -11,17 +29,17 @@
             <el-menu-item index="3-1">数据看板1</el-menu-item>
             <el-menu-item index="3-2">数据看板2</el-menu-item>
           </el-sub-menu>
-        </el-menu>
-      </el-scrollbar>
-    </div>
-    <div class="layout_tabbar">456</div>
-    <div class="layout_main">789</div>
-  </div>
+        </el-menu> -->
 </template>
 
 <script setup lang="ts">
 //引入左侧菜单logo子组件
 import Logo from "./logo/index.vue";
+import Menu from "./menu/index.vue";
+//右侧内容展示区域
+import Main from "./main/index.vue";
+import useUserStore from "@/store/modules/user";
+let userStore = useUserStore();
 </script>
 
 <style lang="scss" scoped>

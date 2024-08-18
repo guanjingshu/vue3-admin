@@ -1,27 +1,32 @@
 <template>
   <div class="layout_container">
-    <div class="layout_slider">
+    <div class="layout_slider" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <Logo></Logo>
       <el-scrollbar class="scrollbar">
         <!--根据路由动态生成菜单-->
-        <!-- {{ userStore.menuRoutes  :collapse="LayOutSettingStore.fold?true:false"}} -->
-        <el-menu :default-active="$route.path" background-color="#001529" text-color="white" active-text-color="yellowgreen">
+        <!-- {{ userStore.menuRoutes   }} -->
+        <el-menu :collapse="LayOutSettingStore.fold ? true : false" :default-active="$route.path" background-color="#001529" text-color="white" active-text-color="yellowgreen">
           <Menu :menuList="userStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <!--  :class="{ fold: LayOutSettingStore.fold ? true : false }" -->
-    <div class="layout_tabbar">
+    <!--   -->
+    <div class="layout_tabbar" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <!-- layout组件的顶部导航tabbar -->
       <Tabbar></Tabbar>
     </div>
-    <div class="layout_main">
+    <div class="layout_main" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <Main></Main>
     </div>
   </div>
 </template>
 
+<script lang="ts">
+  export default {
+    name: 'Layout',
+  };
+</script>
 <script setup lang="ts">
   //获取路由对象
   import { useRoute } from 'vue-router';
@@ -36,6 +41,7 @@
   import useUserStore from '@/store/modules/user';
   import useLayOutSettingStore from '@/store/modules/setting';
   let userStore = useUserStore();
+  let LayOutSettingStore = useLayOutSettingStore();
   //获取路由对象
   let $route = useRoute();
 </script>
@@ -60,6 +66,9 @@
           border-right: none;
         }
       }
+    }
+    & .fold {
+      width: $base-menu-min-width;
     }
 
     .layout_tabbar {
